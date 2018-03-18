@@ -6,12 +6,27 @@
     android:layout_height="match_parent"
     tools:context="com.example.vitaly.yandexapplication.MainActivity">
 
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:id="@+id/listView">
 
+        android:id="@+id/listView">
+        <!-- android:paddingTop="8dp" -->
     </ListView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:tint="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_input_add"
+        />
+
+
 
 </android.support.constraint.ConstraintLayout>

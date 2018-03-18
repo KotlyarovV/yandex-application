@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Yandexapplication.iml" filepath="$PROJECT_DIR$/Yandexapplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yandex-application.iml" filepath="$PROJECT_DIR$/yandex-application.iml" />
     </modules>
   </component>
 </project>

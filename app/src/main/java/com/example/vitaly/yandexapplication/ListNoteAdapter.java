@@ -1,10 +1,12 @@
 package com.example.vitaly.yandexapplication;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -38,7 +40,30 @@ public class ListNoteAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        return null;
+    public View getView(int i, View convertView, ViewGroup viewGroup) {
+        View view = convertView;
+        if (view == null) {
+            view = layoutInflater.inflate(R.layout.item_layout, viewGroup, false);
+        }
+
+        ListNote note = getListNote(i);
+
+        TextView textViewCaption = (TextView) view.findViewById(R.id.caption);
+        TextView textViewDescription = (TextView) view.findViewById(R.id.description);
+        TextView textViewDate = (TextView) view.findViewById(R.id.date);
+        TextView textViewTime = (TextView) view.findViewById(R.id.time);
+
+        textViewCaption.setText(note.getCaption());
+        textViewDescription.setText(note.getDescription());
+        textViewDate.setText(note.getDate());
+        textViewTime.setText(note.getTime());
+
+        view.setBackgroundColor(note.getColor());
+
+        return view;
+    }
+
+    private ListNote getListNote(int i) {
+        return (ListNote) getItem(i);
     }
 }

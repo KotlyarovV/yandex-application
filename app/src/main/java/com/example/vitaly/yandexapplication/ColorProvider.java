@@ -1,5 +1,8 @@
 package com.example.vitaly.yandexapplication;
 
+import android.app.Application;
+import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 
 import java.util.Random;
@@ -11,9 +14,15 @@ import java.util.Random;
 public class ColorProvider {
 
     public static Random random = new Random();
-    public static int[] colors = new int[]{ Color.WHITE, Color.GRAY, Color.YELLOW };
+    public int[] colors;
+    public Context context;
 
-    public static int getRandomColor() {
+    public ColorProvider(Context context) {
+        this.context = context;
+        colors = context.getResources().getIntArray(R.array.note_colors);
+    }
+
+    public int getRandomColor() {
         return colors[random.nextInt(colors.length)];
     }
 

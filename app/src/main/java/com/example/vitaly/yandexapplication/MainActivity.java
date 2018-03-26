@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_CREATE_NOTE = 1;
     public static final int REQUEST_CODE_REDACT_NOTE = 2;
 
-
     public static final String REDACTED_NOTE = "REDACTED_NOTE";
     public static final String REDACTED_NOTE_NUMBER = "REDACTED_NOTE_NUMBER";
+    public static final String ITEMS = "ITEMS";
 
     private ListView listView;
-    private List<ListNote> items;
+    private ArrayList<ListNote> items;
     private ListNoteAdapter adapter;
 
     @Override
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listView);
 
-        items = new ArrayList<>();;
+        items = new ArrayList<>();
         adapter = new ListNoteAdapter(this, items);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(handleItemClick(this));
@@ -85,7 +86,26 @@ public class MainActivity extends AppCompatActivity {
              items.set(i, listNote);
              adapter.notifyDataSetChanged();
          }
+
+        if (requestCode == REQUEST_CODE_REDACT_NOTE && resultCode == NoteEditorActivity.DELETE_RESULT) {
+            int i = data.getIntExtra(REDACTED_NOTE_NUMBER, 0);
+            items.remove(i);
+            adapter.notifyDataSetChanged();
+        }
+
     }
 
+
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(ITEMS, items);
+    }
+
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        List<ListNote> items = (ArrayList<ListNote>) savedInstanceState.getSerializable(ITEMS);
+        this.items.addAll(items);
+        adapter.notifyDataSetChanged();
+    }
 
 }

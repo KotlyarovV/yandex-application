@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -52,13 +53,13 @@ public class ListNoteAdapter extends BaseAdapter {
         TextView textViewDescription = (TextView) view.findViewById(R.id.description);
         TextView textViewDate = (TextView) view.findViewById(R.id.date);
         TextView textViewTime = (TextView) view.findViewById(R.id.time);
+        ImageView imageView = (ImageView) view.findViewById(R.id.color);
 
         textViewCaption.setText(note.getCaption());
         textViewDescription.setText(note.getDescription());
         textViewDate.setText(note.getDate());
         textViewTime.setText(note.getTime());
-
-        view.setBackgroundColor(note.getColor());
+        imageView.setBackgroundColor(note.getColor());
 
         return view;
     }

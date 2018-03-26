@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.CancellationException;
 
 /**
  * Created by vitaly on 18.03.18.
@@ -143,4 +144,10 @@ public class NoteEditorActivity extends AppCompatActivity {
         finish();
     }
 
+    public void onBackPressed() {
+        Log.d("fff", "asaaaaaa");
+        Intent backIntent = new Intent();
+        setResult(RESULT_CANCELED);
+        finish();
+    }
 }

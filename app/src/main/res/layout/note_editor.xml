@@ -3,10 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingBottom="8dp"
-    android:paddingTop="8dp">
+    android:paddingLeft="@dimen/editor_horizontal_padding"
+    android:paddingRight="@dimen/editor_horizontal_padding"
+    android:paddingBottom="@dimen/editor_vertical_padding"
+    android:paddingTop="@dimen/editor_vertical_padding">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,14 +23,16 @@
         android:id="@+id/caption_editor"
         android:visibility="visible"
         android:minLines="2"
-        android:background="#d5ede0"
+        android:background="@color/caption_editor_color"
         android:layout_marginBottom="10dp"
+        android:focusable="true"
         />
+
     <EditText
         android:inputType="textMultiLine"
         android:gravity="start"
         android:minLines="14"
-        android:background="#f7f69c"
+        android:background="@color/description_editor_color"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/caption_editor"
@@ -48,7 +51,7 @@
         app:layout_constraintEnd_toStartOf="@id/delete"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Save" />
+        android:text="@string/save_string" />
 
     <Button
         android:id="@+id/delete"
@@ -59,8 +62,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="gone"
-        android:text="Delete"
-
+        android:text="@string/delete_string"
         />
 
 </android.support.constraint.ConstraintLayout>

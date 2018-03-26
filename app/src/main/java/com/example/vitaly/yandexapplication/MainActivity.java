@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+         super.onActivityResult(requestCode, resultCode, data);
          if (requestCode == REQUEST_CODE_CREATE_NOTE && resultCode == RESULT_OK) {
              ListNote listNote = (ListNote) data.getSerializableExtra(NoteEditorActivity.NODE_EDITOR_DATA);
              items.add(listNote);
@@ -92,9 +92,7 @@ public class MainActivity extends AppCompatActivity {
             items.remove(i);
             adapter.notifyDataSetChanged();
         }
-
     }
-
 
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -103,9 +101,11 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        List<ListNote> items = (ArrayList<ListNote>) savedInstanceState.getSerializable(ITEMS);
-        this.items.addAll(items);
-        adapter.notifyDataSetChanged();
+        if (savedInstanceState != null) {
+            List<ListNote> items = (ArrayList<ListNote>) savedInstanceState.getSerializable(ITEMS);
+            this.items.addAll(items);
+            adapter.notifyDataSetChanged();
+        }
     }
 
 }

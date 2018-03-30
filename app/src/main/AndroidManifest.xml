@@ -19,7 +19,7 @@
         <activity
             android:name=".NoteEditorActivity"
             android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="stateHidden |adjustPan">
+            android:windowSoftInputMode="adjustResize">
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MainActivity"></meta-data>
         </activity>
     </application>

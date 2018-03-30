@@ -9,6 +9,7 @@ import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -145,9 +146,18 @@ public class NoteEditorActivity extends AppCompatActivity {
     }
 
     public void onBackPressed() {
-        Log.d("fff", "asaaaaaa");
-        Intent backIntent = new Intent();
         setResult(RESULT_CANCELED);
         finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
